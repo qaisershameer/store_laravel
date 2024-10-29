@@ -7,5 +7,15 @@
 </head>
 <body>
     <h1>Hello Admin</h1>    
+
+    <!-- Authentication -->
+    <form method="POST" action="{{ route('logout') }}">
+        
+        @csrf
+        
+        <input type="submit" value="Logout">        
+
+    </form>
+
 </body>
 </html>
