@@ -79,19 +79,25 @@
             <tr>
               <th> Category Name </th>
               <th> Updated @ </th>
-              <th> Action </th>
+              <th> Edit </th>
+              <th> Delete </th>
             </tr>
 
             @foreach($data as $data)
 
-              <tr>
+            <tr>                
                 <td> {{ $data->category_name }} </td>
                 <td> {{ $data->updated_at }} </td>
+                
                 <td>
-                  <input class="btn btn-success" type="submit" name="edit" value="Edit Here">
-                  <input class="btn btn-danger" type="submit" name="delete" value="Delete This">
+                  <a class="btn btn-success" href="{{url('edit_category', $data->id)}}">Edit Here</a>
                 </td>
-              </tr>
+
+                <td>
+                <a class="btn btn-danger" onclick="confirmation(event)" href="{{url('delete_category', $data->id)}}">Delete</a>
+                </td>
+
+            </tr>
 
             @endforeach
 
@@ -102,6 +108,40 @@
         </div>
       </div>
     </div>
+
+    <script type="text/javascript">
+
+      function confirmation(ev)
+      {
+        ev.preventDefault();
+
+        var urlToRedirect = ev.currentTarget.getAttribute('href')
+
+        console.log(urlToRedirect);
+
+        swal({
+
+          title: "Are you sure to Delete this",
+          text: "This delete will be permanent",
+          icon: "warning",
+          buttons: true,
+          dangerMode: true,
+
+        })
+
+        .then((willCancel)=>
+        {
+          if(willCancel)
+          {
+            window.location.href = urlToRedirect;
+          }
+
+        });
+
+      }
+
+
+    </script>
 
     @include('admin.js')
 

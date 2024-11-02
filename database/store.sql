@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 28, 2024 at 12:38 PM
+-- Generation Time: Nov 02, 2024 at 02:11 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -44,6 +44,32 @@ CREATE TABLE `cache_locks` (
   `owner` varchar(255) NOT NULL,
   `expiration` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `categories`
+--
+
+CREATE TABLE `categories` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `category_name` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `categories`
+--
+
+INSERT INTO `categories` (`id`, `category_name`, `created_at`, `updated_at`) VALUES
+(1, 'Battery', '2024-11-01 05:50:42', '2024-11-01 05:50:42'),
+(2, 'Lead', '2024-11-01 05:50:59', '2024-11-01 05:50:59'),
+(3, 'General', '2024-11-01 05:51:02', '2024-11-01 05:51:02'),
+(4, 'Plastic', '2024-11-01 05:58:42', '2024-11-02 08:06:49'),
+(5, 'New Battery', '2024-11-01 05:59:53', '2024-11-02 08:09:09'),
+(7, 'KBS PARTIES', '2024-11-01 06:01:48', '2024-11-01 06:01:48'),
+(9, 'ADJUSTMENT ACM', '2024-11-01 06:04:46', '2024-11-02 08:04:07');
 
 -- --------------------------------------------------------
 
@@ -115,7 +141,8 @@ CREATE TABLE `migrations` (
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (1, '0001_01_01_000000_create_users_table', 1),
 (2, '0001_01_01_000001_create_cache_table', 1),
-(3, '0001_01_01_000002_create_jobs_table', 1);
+(3, '0001_01_01_000002_create_jobs_table', 1),
+(4, '2024_10_31_122113_create_categories_table', 2);
 
 -- --------------------------------------------------------
 
@@ -149,10 +176,7 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('12E57zjlDJhKPa04U4aZKtdPg4nLNnAVVklfY6bE', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:131.0) Gecko/20100101 Firefox/131.0', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiSmppVlZiRGZDeEZrY0o2U0dIelBIV0hGelRUb3Q4UHpLYmNmazJJMyI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mzc6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9hZG1pbi9kYXNoYm9hcmQiO31zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO30=', 1730114731),
-('bWdHCtAwEp300BvNwapIpQbeNjSL6k0vsxVypGEr', 2, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiWVp3YVQ3MnhqN1FhczdKdTVSOEdvOHc2NEc0YTBZUm5nVmRUMmxzaSI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mjc6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9sb2dpbiI7fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjI7fQ==', 1730112672),
-('p9Crpgh9nbq8wMfeHnRuZcSd74e9342tgHfXnJVZ', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:131.0) Gecko/20100101 Firefox/131.0', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiRzY0T21IWkMxQU1FYVJCSGpDbzlSVlVTa29CRUFwZlJoa2d1a0tMZyI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mjc6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9sb2dpbiI7fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjE7fQ==', 1729944590),
-('yjpc5BBo0xCDhFKNGpNgP9cFOEiod1r8ajug3Zqz', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:131.0) Gecko/20100101 Firefox/131.0', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiTFZKWTR4NmZ6YTVRWWRnRk5pS3UxcWhUTUU4ZFF2ZGFiVnd6T3J4UCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mjc6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9sb2dpbiI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1729943522);
+('GbGAdyeoHyGuJpV2IdguDBzKENVGuwyBPwarcRmR', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:132.0) Gecko/20100101 Firefox/132.0', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoicGRWM0VWWHpoOG15dUdtZUpuUGhKTlRXd3RGZVFUdWRmNjBuNTVaVyI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czoxODoiZmxhc2hlcjo6ZW52ZWxvcGVzIjthOjA6e31zOjk6Il9wcmV2aW91cyI7YToxOntzOjM6InVybCI7czoyMToiaHR0cDovLzEyNy4wLjAuMTo4MDAwIjt9fQ==', 1730552973);
 
 -- --------------------------------------------------------
 
@@ -179,8 +203,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `usertype`, `phone`, `address`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'admin', 'admin@gmail.com', 'admin', '+923346013608', 'Multan Punjab Pakistan', NULL, '$2y$12$z.n3EohPVfLsCBc/1905T.IDHLX1z4tOjrG8wijwzO60ZO44Qr8GG', 'Dtsg2tSpjqdrLQciJdgUQsDELRJz1gHkah1DBr2hdl2vjeDOwM8WM9n7O1C9', '2024-10-26 06:42:58', '2024-10-26 06:42:58'),
-(2, 'user1', 'user1@gmail.com', 'user', '+923136336807', 'Moza Wan Chattah', NULL, '$2y$12$zfPKoWhSLIPqbdBiFcjczOuMLSIh06liuAIQ4s3dclfkhgQIiqrgO', '3zecGEaX8y3MZa5Kpbh9wDz8YQ2ZfUaOywSPhbHp8HZ2vuxk0pOEzTPnZg3a', '2024-10-26 06:43:24', '2024-10-26 06:43:24'),
+(1, 'admin', 'admin@gmail.com', 'admin', '+923346013608', 'Multan Punjab Pakistan', NULL, '$2y$12$z.n3EohPVfLsCBc/1905T.IDHLX1z4tOjrG8wijwzO60ZO44Qr8GG', 'jQVehTzvJIOnLPQmUAxqkYO9ogAawM94f4smNsWh6j9b8FJwdeOTVoSyIrHI', '2024-10-26 06:42:58', '2024-10-26 06:42:58'),
+(2, 'user1', 'user1@gmail.com', 'user', '+923136336807', 'Moza Wan Chattah', NULL, '$2y$12$zfPKoWhSLIPqbdBiFcjczOuMLSIh06liuAIQ4s3dclfkhgQIiqrgO', 'dpEPtaLJ147p1m359LdgXPemeEse2sCPNBU1Rs9DO38y8QExVUj0k0fpDa00', '2024-10-26 06:43:24', '2024-10-26 06:43:24'),
 (3, 'Qaiser Shameer', 'qaiser@gmail.com', 'user', '+923477072247', 'Multan', NULL, '$2y$12$xBhMUbgNtqbETgU/dEeM5e2SS4s1xUNBx0ZdQGehvDItY1txhZCAK', NULL, '2024-10-28 06:23:15', '2024-10-28 06:23:15');
 
 --
@@ -198,6 +222,12 @@ ALTER TABLE `cache`
 --
 ALTER TABLE `cache_locks`
   ADD PRIMARY KEY (`key`);
+
+--
+-- Indexes for table `categories`
+--
+ALTER TABLE `categories`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `failed_jobs`
@@ -251,6 +281,12 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `categories`
+--
+ALTER TABLE `categories`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
 -- AUTO_INCREMENT for table `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
@@ -266,7 +302,7 @@ ALTER TABLE `jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `users`
