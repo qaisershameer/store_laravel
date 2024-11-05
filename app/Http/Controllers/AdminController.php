@@ -6,11 +6,16 @@ use Illuminate\Http\Request;
 
 use App\Models\Category;
 
+use App\Models\Product;
+
 class AdminController extends Controller
 {
+
+    //////////////////// CATEGORY TABLE CRUD ////////////////////
+
     public function view_category()
     {
-        $data = Category::all();
+        $data = Category::orderBy('category_name')->get();
         return view('admin.category', compact('data'));
     }
 
@@ -18,7 +23,7 @@ class AdminController extends Controller
     {
         $data = new Category;
 
-        $data->category_name = $request->category;
+        $data->category_name = $request->category_name;
 
         $data->save();
 
@@ -53,7 +58,7 @@ class AdminController extends Controller
 
         $data = Category::find($id);
 
-        $data->category_name = $request->category;
+        $data->category_name = $request->category_name;
 
         $data->save();
 
@@ -61,6 +66,39 @@ class AdminController extends Controller
 
         return redirect('/view_category');
 
+    }
+
+    //////////////////// PRODUCT TABLE CRUD ////////////////////
+    
+    public function view_product()
+    {
+        $data = Product::orderBy('product_name')->get();
+        return view('admin.view_product', compact('data'));
+    }
+
+    public function add_product(Request $request)
+    {
+        $category = Category::orderBy('category_name')->get();                
+        return view('admin.add_product', compact('category'));   
+    }
+    
+    public function upload_product(Request $request)
+    {
+        
+        $data = new Product;
+
+        $data->product_name = $request->product_name;
+        $data->description = $request->description;
+        $data->price = $request->price;
+        $data->qty = $request->qty;
+        $data->category_Id = $request->category_Id;
+
+        $data->save();
+
+        toastr()->timeOut(2000)->closeButton()->addSuccess('Product Added Successfully.');
+
+        return redirect()->back();
+        // return redirect('admin.view_product');
     }
 
 }

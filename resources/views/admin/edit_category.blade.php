@@ -63,7 +63,7 @@
 
                     @csrf
 
-                    <input type="text" name="category" value="{{$data->category_name, $data->id}}">
+                    <input type="text" name="category_name" value="{{$data->category_name, $data->id}}">
 
                     <input class="btn btn-success" type="submit" value="Update Category">
 

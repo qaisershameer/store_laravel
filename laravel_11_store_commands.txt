@@ -1,0 +1,39 @@
+
+	composer create-project laravel/laravel store					// create store project in c:\xampp\htdocs\store
+	
+	cd store									// go to project directory
+
+	php artisan serve								// run the server to check laravel installation on browser
+	
+	composer require laravel/breeze --dev						// breeze dev starter kit
+	
+	php artisan breeze:install
+ 
+	php artisan migrate
+	npm install
+	npm run dev
+	
+	php artisan migrate
+
+	php artisan make:Controller HomeController -m
+
+	php artisan make:middleware Admin
+
+	php artisan make:controller AdminController
+
+	php artisan make:model Category -m
+
+	php artisan migrate
+
+	composer require php-flasher/flasher-toastr-laravel
+
+	composer require php-flasher/flasher-toastr-symfony
+
+	php artisan flasher:install
+
+	php artisan make:model Product -m
+
+	php artisan migrate
+
+	https://www.youtube.com/watch?v=jxUqAU_B8WE&list=PLm8sgxwSZofdmlPxaDB7fRLv_NVe2uFKl&index=11
+

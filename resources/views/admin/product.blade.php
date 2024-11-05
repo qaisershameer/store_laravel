@@ -9,7 +9,7 @@
         
         input[type='text']
         {
-            width: 420px;
+            width: 400px;
             height: 50px;
         }
         .div_deg
@@ -55,18 +55,13 @@
         <div class="page-header">
           <div class="container-fluid">
 
-          <h1 style="color:white;">Category Information</h1>
+          <h1 style="color:white;">Product Information</h1>
 
           <div class="div_deg">
 
-            <form action="{{url('add_category')}}" method="post">
+            <form action="{{url('add_product')}}" method="post">
 
                 @csrf
-
-                <div>
-                    <input type="text" name="category_name">                
-                    <input class="btn btn-primary" type="submit" value="Add Category">
-                </div>
 
             </form>
 
@@ -77,7 +72,7 @@
             <table class="table_deg">
 
             <tr>
-              <th> Category Name </th>
+              <th> Product Name </th>
               <th> Updated @ </th>
               <th> Edit </th>
               <th> Delete </th>
@@ -86,15 +81,15 @@
             @foreach($data as $data)
 
             <tr>                
-                <td> {{ $data->category_name }} </td>
+                <td> {{ $data->product_name }} </td>
                 <td> {{ $data->updated_at }} </td>
                 
                 <td>
-                  <a class="btn btn-success" href="{{url('edit_category', $data->id)}}">Edit Here</a>
+                  <a class="btn btn-success" href="{{url('edit_product', $data->id)}}">Edit Here</a>
                 </td>
 
                 <td>
-                <a class="btn btn-danger" onclick="confirmation(event)" href="{{url('delete_category', $data->id)}}">Delete</a>
+                <a class="btn btn-danger" onclick="confirmation(event)" href="{{url('delete_product', $data->id)}}">Delete</a>
                 </td>
 
             </tr>
@@ -108,6 +103,40 @@
         </div>
       </div>
     </div>
+
+    <script type="text/javascript">
+
+      function confirmation(ev)
+      {
+        ev.preventDefault();
+
+        var urlToRedirect = ev.currentTarget.getAttribute('href')
+
+        console.log(urlToRedirect);
+
+        swal({
+
+          title: "Are you sure to Delete this",
+          text: "This delete will be permanent",
+          icon: "warning",
+          buttons: true,
+          dangerMode: true,
+
+        })
+
+        .then((willCancel)=>
+        {
+          if(willCancel)
+          {
+            window.location.href = urlToRedirect;
+          }
+
+        });
+
+      }
+
+
+    </script>
 
     @include('admin.js')
 

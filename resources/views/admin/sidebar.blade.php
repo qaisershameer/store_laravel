@@ -12,12 +12,17 @@
         <!-- Sidebar Navidation Menus--><span class="heading">Main</span>
         <ul class="list-unstyled">
 
-                <li class="active"><a href="index.html"> <i class="icon-home"></i>Home </a></li>
+                <li class="active"><a href="index.html"> <i class="icon-home"></i> Home </a></li>
 
-                <li><a href="{{url('view_category')}}"> <i class="icon-grid"></i>Category </a></li>
+                <li><a href="{{url('view_category')}}"> <i class="icon-grid"></i> Category </a></li>
 
-                <li><a href="charts.html"> <i class="fa fa-bar-chart"></i>Charts </a></li>
-                <li><a href="forms.html"> <i class="icon-padnote"></i>Forms </a></li>
+                <li><a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-windows"></i> Products </a>
+                  <ul id="exampledropdownDropdown" class="collapse list-unstyled ">
+                    <li><a href="{{url('add_product')}}"> <i class="fa fa-bar-chart"></i> Add Product </a></li>
+                    <li><a href="{{url('view_product')}}"> <i class="icon-padnote"></i> View Product </a></li>
+                  </ul>
+                </li> 
+
                 <li><a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-windows"></i>Example dropdown </a>
                   <ul id="exampledropdownDropdown" class="collapse list-unstyled ">
                     <li><a href="#">Page</a></li>
